@@ -1,0 +1,17 @@
+<apex:component controller="JobsController" selfClosing="true">
+
+
+    <!-- This action poller will check the status of the batch jobs every 5 seconds -->
+    <apex:actionPoller rerender="jobs" interval="5"/>
+    <apex:pageBlock title="batchComponentLabel">
+  
+        <apex:pageBlockTable value="{!jobs}" var="job" id="jobs">
+                                    
+            <apex:column headerValue="Apex Class" value="{!job.ApexClass.Name}"/>
+            <apex:column value="{!job.CreatedDate}"/>
+            <apex:column value="{!job.CreatedById}"/>
+            <apex:column value="{!job.Status}"/>            
+           
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:component>

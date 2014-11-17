@@ -1,0 +1,47 @@
+<apex:page controller="AttachmentUploadController">
+  <apex:sectionHeader title="RedGiving" subtitle="Upload donations" />
+
+  <apex:form enctype="multipart/form-data">
+    <apex:pageMessages />
+    <apex:pageBlock title="Upload Donation CSV file">
+      <apex:pageBlockSection title="Step 1: Download CSV files to your computer" columns="1">
+        First you need the CSV files from the donation site stored on your local computer.
+        RedGiving supports:
+        <ul>
+          <li>JustGiving <strong>Payment reports</strong> CSV file -
+            <a href="https://www.justgiving.com/Charities/beta/reports/payment-reports">JustGiving report page *</a>
+            Please download as CSV. Downloading as Excel then saving as CSV is not supported.
+          </li>
+          <li>VirginMoneyGiving <strong>Flexible reporting / Donations</strong> CSV file -           
+            <a href="https://uk.virginmoneygiving.com/reports/flow.html?_flowId=viewAdhocReportFlow&reportUnit=/1bflexible_reporting/donations/donations_flexible&standAlone=true&ParentFolderUri=/1bflexible_reporting/donations">VirginMoneyGiving report page *</a>.
+          </li>
+        </ul>
+        * You will need to login first.
+      </apex:pageBlockSection>
+ 
+      <apex:pageBlockSection title="Step 2: Select the file to be uploaded" columns="1">
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel value="File to be imported" for="file"/>
+          <apex:inputFile value="{!attachment.body}" filename="{!attachment.name}" id="file"/>
+        </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>
+      
+      <apex:pageBlockSection title="Step 3: Hit the upload button" columns="1">
+        To start the import process hit the &quot;Upload&quot; button.
+      </apex:pageBlockSection>
+
+      <apex:pageBlockButtons >
+        <apex:commandButton action="{!upload}" value="Upload"/>
+      </apex:pageBlockButtons>
+<!-- 
+ 
+      <apex:pageBlockSection title="Notes" columns="1">
+        <ol>
+          <li>If you accidently upload the same file more than once you won't got duplicate donations.</li>
+          <li>JustGiving direct donations report is not supported as it doesn't contain full fundraiser information.</li>
+        </ol>
+      </apex:pageBlockSection>
+  -->
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

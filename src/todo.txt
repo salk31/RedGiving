@@ -1,0 +1,30 @@
+* report/record total processed etc?
+
+* csv row unit test
+
+
+
+* unit test for CSV char decoding
+* unit test for JG putting £ on front!
+https://justgiving-charity-support.zendesk.com/entries/22283987-Understanding-your-donation-reports
+
+
+
+* suggestion to email error contents/link?
+
+
+* hide CharityGiving tab
+
+* starting point test data that can amend to get different results?
+
+* My fields wrong style, camel case not underscore?
+
+* test - copying over gift aid
+
+
+* Set type on accounts?
+
+
+* Test same donor giving twice to same page
+
+https://uk.virginmoneygiving.com/giving/help-guides/charities/popup/donations_flexible.jsp
