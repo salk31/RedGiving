@@ -42,6 +42,11 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>Account_Mapping__c</members>
+        <members>Contact_Mapping__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
         <members>RedGivingImport</members>
         <name>CustomTab</name>
     </types>
