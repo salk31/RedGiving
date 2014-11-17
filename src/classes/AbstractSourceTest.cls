@@ -125,12 +125,6 @@ public abstract class AbstractSourceTest {
     System.assertEquals(1, insertedDonors.size());
     Contact donor = insertedDonors.get(0);
     
-    List<npe5__Affiliation__c> afils =
-            [SELECT Name, npe5__Role__c FROM npe5__Affiliation__c
-                WHERE npe5__Contact__c = :fundraiser.Id
-                AND npe5__Organization__c = :page.Id];
-    System.assertEquals(1, afils.size());
-    npe5__Affiliation__c afil = afils.get(0);
     // TODO __ System.assertEquals('JustGiving fundraiser', afil.npe5__Role__c);
     
     List<Opportunity> insertedDonations = [SELECT Name, redspr__Gift_aid_eligible__c
