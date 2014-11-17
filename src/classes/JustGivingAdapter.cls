@@ -1,6 +1,6 @@
 public class JustGivingAdapter implements SourceAdapter {
 
-public class Foo implements SourceContactAdapter {
+public class JGContactAdapter implements SourceContactAdapter {
     private SSSCsvRow csv;
     
     private String pfx;

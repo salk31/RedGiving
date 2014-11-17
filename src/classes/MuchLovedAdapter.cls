@@ -8,7 +8,7 @@ public class MuchLovedAdapter implements SourceAdapter {
     
     private String pfx;
     
-    public Foo(SSSCsvRow csv2, Boolean donor2) {
+    public MLContactAdapter(SSSCsvRow csv2, Boolean donor2) {
       this.csv = csv2;
       this.donor = donor2;
       pfx = donor ? 'Donor ' : 'Fundraiser ';
