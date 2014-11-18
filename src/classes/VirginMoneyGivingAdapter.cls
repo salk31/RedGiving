@@ -112,7 +112,7 @@ public class VirginMoneyGivingAdapter implements SourceAdapter {
     donation.StageName = 'Posted';
     donation.Amount = decimal.valueOf(csv.getString('gross amount'));
     donation.Description = csv.getString('donor message');
-    donation.redspr__Total_deductions__c = decimal.valueOf(csv.getString('total_deductions'));
+    donation.Total_deductions__c = decimal.valueOf(csv.getString('total_deductions'));
     return donation;
   }
 

@@ -17,7 +17,7 @@ global class AttachmentUploadBatchable implements Database.batchable<SSSCsvRow>,
 
   private Contact getContact(String extId) {
     List<Contact> contacts =
-        [SELECT Name FROM Contact WHERE Id IN (SELECT redspr__Contact__c FROM redspr__Contact_Mapping__c WHERE Name = :extId)];
+        [SELECT Name FROM Contact WHERE Id IN (SELECT Contact__c FROM Contact_Mapping__c WHERE Name = :extId)];
     if (contacts.size() == 0) {
       return null;
     }
@@ -27,9 +27,9 @@ global class AttachmentUploadBatchable implements Database.batchable<SSSCsvRow>,
   private void addContact(Contact contact, String extId) {
     insert contact;
     
-    redspr__Contact_Mapping__c cm = new redspr__Contact_Mapping__c();
+    Contact_Mapping__c cm = new Contact_Mapping__c();
     
-    cm.redspr__Contact__c = contact.Id;
+    cm.Contact__c = contact.Id;
     cm.Name = extId;
     insert cm;
   }
@@ -66,7 +66,7 @@ global class AttachmentUploadBatchable implements Database.batchable<SSSCsvRow>,
         String pageId = sourceAdapter.getPageId();
       
 
-        List<Account> pages = [SELECT Name FROM Account WHERE Id IN (SELECT redspr__Account__c FROM redspr__Account_Mapping__c
+        List<Account> pages = [SELECT Name FROM Account WHERE Id IN (SELECT Account__c FROM Account_Mapping__c
                                      WHERE Name = :pageId)];
         if (pages.size() == 0) {
           page = new Account();
@@ -74,9 +74,9 @@ global class AttachmentUploadBatchable implements Database.batchable<SSSCsvRow>,
           page.Website = sourceAdapter.getPageUrl();
           insert page;
      
-          redspr__Account_Mapping__c mapping = new redspr__Account_Mapping__c();
+          Account_Mapping__c mapping = new Account_Mapping__c();
           mapping.Name = pageId;
-          mapping.redspr__Account__c = page.Id;
+          mapping.Account__c = page.Id;
 
           insert mapping;
           
@@ -133,11 +133,11 @@ global class AttachmentUploadBatchable implements Database.batchable<SSSCsvRow>,
 
       String donationId = sourceAdapter.getDonationId();
       List<Opportunity> donations =
-          [SELECT Name FROM Opportunity WHERE redspr__RedGivingId__c = :donationId];
+          [SELECT Name FROM Opportunity WHERE RedGivingId__c = :donationId];
       if (donations.size() == 0) {
         Opportunity donation = sourceAdapter.createDonation();
-        donation.redspr__RedGivingId__c = sourceAdapter.getDonationId();
-        donation.redspr__Gift_aid_eligible__c = sourceAdapter.isGiftAidEligible();
+        donation.RedGivingId__c = sourceAdapter.getDonationId();
+        donation.Gift_aid_eligible__c = sourceAdapter.isGiftAidEligible();
         if (page != null) {
           donation.AccountId = page.Id;
         }

@@ -113,7 +113,7 @@ public class JGContactAdapter implements SourceContactAdapter {
     donation.StageName = 'Posted';
     donation.Amount = decimal.valueOf(csv.getString('Donation Amount'));
     donation.Description = csv.getString('Donation Nickname') + ': ' + csv.getString('Message From Donor');
-    donation.redspr__Total_deductions__c = decimal.valueOf(csv.getString('Payment Processing Fee Amount'))
+    donation.Total_deductions__c = decimal.valueOf(csv.getString('Payment Processing Fee Amount'))
                 + decimal.valueOf(csv.getString('JustGiving Transaction Fee Amount'));
     return donation;
   }

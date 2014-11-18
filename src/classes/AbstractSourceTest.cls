@@ -77,12 +77,12 @@ public abstract class AbstractSourceTest {
     Contact donor = insertedDonors.get(0);
     System.assertEquals(page.Id, donor.AccountId);
     
-    List<Opportunity> insertedDonations = [SELECT Name, redspr__Gift_aid_eligible__c
+    List<Opportunity> insertedDonations = [SELECT Name, Gift_aid_eligible__c
                                       FROM Opportunity WHERE AccountId = :page.Id
                                       ORDER BY CloseDate];
     System.assertEquals(2, insertedDonations.size());
     Opportunity donation = insertedDonations.get(0);
-    System.assertEquals(False, donation.redspr__Gift_aid_eligible__c);
+    System.assertEquals(False, donation.Gift_aid_eligible__c);
     
     List<OpportunityContactRole> ocrs = [SELECT OpportunityId FROM OpportunityContactRole WHERE ContactId = :donor.Id];
     System.assertEquals(2, ocrs.size());
@@ -127,12 +127,12 @@ public abstract class AbstractSourceTest {
     
     // TODO __ System.assertEquals('JustGiving fundraiser', afil.npe5__Role__c);
     
-    List<Opportunity> insertedDonations = [SELECT Name, redspr__Gift_aid_eligible__c
+    List<Opportunity> insertedDonations = [SELECT Name, Gift_aid_eligible__c
         FROM Opportunity
-        WHERE redspr__RedGivingId__c= :getPrefix() + '_4'];
+        WHERE RedGivingId__c= :getPrefix() + '_4'];
     System.assertEquals(1, insertedDonations.size());
     Opportunity donation = insertedDonations.get(0);
-    System.assertEquals(False, donation.redspr__Gift_aid_eligible__c);
+    System.assertEquals(False, donation.Gift_aid_eligible__c);
     
     List<OpportunityContactRole> ocrs = [SELECT ContactId 
         FROM OpportunityContactRole 

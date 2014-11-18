@@ -59,8 +59,8 @@ private class AttachmentUploadControllerTest {
     Test.StopTest();
     
  
-    List<Opportunity> insertedDonations = [SELECT Name, CloseDate, redspr__Gift_aid_eligible__c
-                                      FROM Opportunity WHERE redspr__RedGivingId__c = 'VMG_123,123,123'];
+    List<Opportunity> insertedDonations = [SELECT Name, CloseDate, Gift_aid_eligible__c
+                                      FROM Opportunity WHERE RedGivingId__c = 'VMG_123,123,123'];
     System.assertEquals(1, insertedDonations.size());
     Opportunity donation = insertedDonations.get(0);
     System.assertEquals(Date.newInstance(2013, 5, 30), donation.CloseDate);
@@ -134,12 +134,12 @@ private class AttachmentUploadControllerTest {
     Contact donor = insertedDonors.get(0);
     System.assertEquals(page.Id, donor.AccountId);
     
-    List<Opportunity> insertedDonations = [SELECT Name, redspr__Gift_aid_eligible__c
+    List<Opportunity> insertedDonations = [SELECT Name, Gift_aid_eligible__c
                                       FROM Opportunity WHERE AccountId = :page.Id
                                       ORDER BY CloseDate];
     System.assertEquals(2, insertedDonations.size());
     Opportunity donation = insertedDonations.get(0);
-    System.assertEquals(False, donation.redspr__Gift_aid_eligible__c);
+    System.assertEquals(False, donation.Gift_aid_eligible__c);
     
     List<OpportunityContactRole> ocrs = [SELECT OpportunityId FROM OpportunityContactRole WHERE ContactId = :donor.Id];
     System.assertEquals(2, ocrs.size());
@@ -194,11 +194,11 @@ private class AttachmentUploadControllerTest {
     Contact donor = insertedDonors.get(0);
 
     
-    List<Opportunity> insertedDonations = [SELECT Name, redspr__Gift_aid_eligible__c
-                                      FROM Opportunity WHERE redspr__RedGivingId__c='JG_4'];
+    List<Opportunity> insertedDonations = [SELECT Name, Gift_aid_eligible__c
+                                      FROM Opportunity WHERE RedGivingId__c='JG_4'];
     System.assertEquals(1, insertedDonations.size());
     Opportunity donation = insertedDonations.get(0);
-    System.assertEquals(False, donation.redspr__Gift_aid_eligible__c);
+    System.assertEquals(False, donation.Gift_aid_eligible__c);
     
     List<OpportunityContactRole> ocrs = [SELECT ContactId FROM OpportunityContactRole WHERE OpportunityId = :donation.Id];
     System.assertEquals(1, ocrs.size());
@@ -244,8 +244,8 @@ private class AttachmentUploadControllerTest {
     Contact fundraiser = insertedFundraisers.get(0);
     System.assertEquals('Hussain', fundraiser.LastName);
     
-    List<redspr__Contact_Mapping__c> insertedDonors = [SELECT redspr__Contact__c
-                                    FROM redspr__Contact_Mapping__c 
+    List<Contact_Mapping__c> insertedDonors = [SELECT Contact__c
+                                    FROM Contact_Mapping__c 
                                     WHERE Name='VMG_D_d123'];
     System.assertEquals(1, insertedDonors.size());
     //Contact donor = insertedDonors.get(0);
@@ -284,7 +284,7 @@ private class AttachmentUploadControllerTest {
     upload(csv.build());
     Test.StopTest();
 
-    List<Opportunity> donations = [SELECT Name FROM Opportunity WHERE redspr__RedGivingId__c = :id];
+    List<Opportunity> donations = [SELECT Name FROM Opportunity WHERE RedGivingId__c = :id];
     System.assertEquals(1, donations.size());
   }
   	

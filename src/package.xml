@@ -42,8 +42,19 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>Account_Mapping__c.Account__c</members>
+        <members>Contact_Mapping__c.Contact__c</members>
+        <members>Opportunity.Gift_aid_eligible__c</members>
+        <members>Opportunity.RedGivingId__c</members>
+        <members>Opportunity.Total_deductions__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Account</members>
         <members>Account_Mapping__c</members>
+        <members>Contact</members>
         <members>Contact_Mapping__c</members>
+        <members>Opportunity</members>
         <name>CustomObject</name>
     </types>
     <types>

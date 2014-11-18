@@ -141,7 +141,7 @@ public class MuchLovedAdapter implements SourceAdapter {
     donation.StageName = 'Posted';
     donation.Amount = getMoney('Donation');
     donation.Description = csv.getString('Donation Nickname') + ': ' + csv.getString('Message From Donor');
-    donation.redspr__Total_deductions__c = getMoney('Fee');
+    donation.Total_deductions__c = getMoney('Fee');
     return donation;
   }
 
