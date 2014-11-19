@@ -63,11 +63,11 @@ public class JGContactAdapter implements SourceContactAdapter {
   }
   
   public Boolean hasPage() {
-    return !'0'.equals(getFundraiserId());
+    return !'0'.equals(csv.getString('Fundraiser User Id'));
   }
   
   public String getPageId() {
-    return csv.getString('Fundraising Page Id');
+    return 'JG_P_' + csv.getString('Fundraising Page Id');
   }
 
   public String getPageTitle() {
@@ -79,7 +79,7 @@ public class JGContactAdapter implements SourceContactAdapter {
   }
 
   public String getFundraiserId() {
-    return csv.getString('Fundraiser User Id');
+    return 'JG_C_' + csv.getString('Fundraiser User Id');
   }
 
   public Boolean isDonorAnonymous() {
@@ -95,7 +95,7 @@ public class JGContactAdapter implements SourceContactAdapter {
 
  
   public String getDonorId() {
-    return csv.getString('Donor User Id');
+    return 'JG_C_' + csv.getString('Donor User Id');
   }
   
   public String getDonorRole() {
