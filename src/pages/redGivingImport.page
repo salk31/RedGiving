@@ -15,6 +15,7 @@
           <li>VirginMoneyGiving <strong>Flexible reporting / Donations</strong> CSV file -           
             <a href="https://uk.virginmoneygiving.com/reports/flow.html?_flowId=viewAdhocReportFlow&reportUnit=/1bflexible_reporting/donations/donations_flexible&standAlone=true&ParentFolderUri=/1bflexible_reporting/donations">VirginMoneyGiving report page *</a>.
           </li>
+          <li>MuchLoved <strong>Donor Report CSV</strong> CSV file</li>
         </ul>
         * You will need to login first.
       </apex:pageBlockSection>
