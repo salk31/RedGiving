@@ -15,11 +15,11 @@ public class MuchLovedAdapter implements SourceAdapter {
     }
 
     public Boolean isDoNotCall() {
-      return false;
+      return !'Yes'.equals(csv.getString(pfx + 'Contact By Phone'));
     }
 
     public Boolean hasOptedOutOfEmail() {
-      return !'Yes'.equals(csv.getString(pfx + 'Further Contact'));
+      return !'Yes'.equals(csv.getString(pfx + 'Contact By Email'));
     }
 
     public void updateContact(Contact contact) {
