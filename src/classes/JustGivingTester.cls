@@ -11,16 +11,23 @@ public class JustGivingTester extends AbstractSourceTest {
   }
   
   void addFundraiser(CsvBuilder csv, String id, String familyName) {
-             csv.add('Fundraiser User Id', id);
+    csv.add('Fundraiser User Id', id);
     csv.add('Fundraiser Firstname','Fred');
     csv.add('Fundraiser Lastname', familyName);
-
+  }
+  
+  void addFundraiserEmailOk(CsvBuilder csv) {
+    csv.add('Fundraiser Further Contact', 'Yes');
   }
   
   void addDonor(CsvBuilder csv, String id, String familyName) {
     csv.add('Donor User Id', id);
     csv.add('Donor FirstName','John');
     csv.add('Donor LastName', familyName);
+  }
+  
+  void addDonorEmailOk(CsvBuilder csv) {
+    csv.add('Donor Further Contact', 'Yes');
   }
   
   void addDonation(CsvBuilder csv, String id) {

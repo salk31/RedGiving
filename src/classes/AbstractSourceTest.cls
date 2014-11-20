@@ -14,7 +14,11 @@ public abstract class AbstractSourceTest {
   
   abstract void addFundraiser(CsvBuilder csv, String id, String familyName);
   
+  abstract void addFundraiserEmailOk(CsvBuilder csv);
+  
   abstract void addDonor(CsvBuilder csv, String id, String familyName);
+
+  abstract void addDonorEmailOk(CsvBuilder csv);
 
   abstract void addDonation(CsvBuilder csv, String id);
   
@@ -154,6 +158,57 @@ public abstract class AbstractSourceTest {
     Test.StartTest();
     upload(csv.build());
     Test.StopTest();
+  }
+  
+  public void furtherContact(Boolean forFundraiser, Boolean forDonor) {
+    CsvBuilder csv = new CsvBuilder();
+    String donorLn = 'd' + Math.random();
+    String fundraiserLn = 'f' + Math.random();
+
+    addFundraiser(csv, '1', fundraiserLn);
+      
+    if (forFundraiser) {
+      addFundraiserEmailOk(csv);
+    }
+    
+    addPage(csv, '2', 'Test 1');
+    addDonor(csv, '3', donorLn);
+
+    if (forDonor) {
+      addDonorEmailOk(csv);
+    }
+    
+    addDonation(csv, '4');
+    csv.eol();
+
+    Test.StartTest();
+    upload(csv.build());
+    Test.StopTest();
+    
+    List<Contact> insertedDonors = [SELECT HasOptedOutOfEmail
+                                    FROM Contact WHERE LastName = :donorLn];
+    System.assertEquals(!forDonor, insertedDonors.get(0).HasOptedOutOfEmail);
+    
+                                    
+    List<Contact> insertedFundraisers = [SELECT HasOptedOutOfEmail
+                                    FROM Contact WHERE LastName = :fundraiserLn];
+    System.assertEquals(!forFundraiser, insertedFundraisers.get(0).HasOptedOutOfEmail); 
+  }
+  
+  public void testEmailOkNeither() {
+    furtherContact(False, False);
+  }
+  
+  public void testEmailOkDonor() {
+    furtherContact(False, True);
+  }
+  
+  public void testEmailOkFundraiser() {
+    furtherContact(True, False);
+  }
+  
+  public void testEmailOkBoth() {
+    furtherContact(True, True);
   }
   
   // TODO __ test correct prefixes XX_D, XX_F, XX_ and XX_P

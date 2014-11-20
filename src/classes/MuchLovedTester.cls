@@ -18,12 +18,20 @@ public class MuchLovedTester extends AbstractSourceTest {
     csv.add('Fundraiser Email','foo@boo.com');
   }
   
+  void addFundraiserEmailOk(CsvBuilder csv) {
+    // NO SUPPORT
+  }
+  
   void addDonor(CsvBuilder csv, String id, String familyName) {
     csv.add('Donor ID', id);
     csv.add('Donor First Name','John');
     csv.add('Donor Family Name', familyName);
     
     csv.add('Donor Email','fip@fop.com');
+  }
+
+  void addDonorEmailOk(CsvBuilder csv) {
+    csv.add('Donor Contact By Email', 'Yes');
   }
   
   void addDonation(CsvBuilder csv, String id) {

@@ -26,4 +26,20 @@ private class JustGivingTest {
   static testMethod void testBulk() {
     create().testBulk();
   }
+  
+  static testMethod void testEmailOkNeither() {
+    create().testEmailOkNeither();
+  }
+  
+  static testMethod void testEmailOkDonor() {
+    create().testEmailOkDonor();
+  }
+  
+  static testMethod void testEmailOkFundraiser() {
+    create().testEmailOkFundraiser();
+  }
+  
+  static testMethod void testEmailOkBoth() {
+    create().testEmailOkBoth();
+  }
 }

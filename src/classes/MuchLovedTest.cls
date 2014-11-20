@@ -33,4 +33,20 @@ private class MuchLovedTest {
   static testMethod void testBulk() {
     create().testBulk();
   }
+  
+  static testMethod void testEmailOkNeither() {
+    // NOT SUPPORTED create().testEmailOkNeither();
+  }
+  
+  static testMethod void testEmailOkDonor() {
+    // NOT SUPPORTED create().testEmailOkDonor();
+  }
+  
+  static testMethod void testEmailOkFundraiser() {
+    create().testEmailOkFundraiser();
+  }
+  
+  static testMethod void testEmailOkBoth() {
+    create().testEmailOkBoth();
+  }
 }
