@@ -47,9 +47,9 @@ public class MuchLovedAdapter implements SourceAdapter {
   }
 	
   private SSSCsvRow csv;
-  
+
   private static DateParser dateParser = new DateParser();
-  // TODO __ donor id 0!
+
   public void init(SSSCsvReader reader) {
     String pfx = null;
     String[] headings = reader.getHeadings();
@@ -105,17 +105,15 @@ public class MuchLovedAdapter implements SourceAdapter {
   }
 
   public Boolean isDonorAnonymous() {
-    String donorEmail = csv.getString('Donor Email');
-    if ('Opt-out'.equals(donorEmail)) {
-      return true;
-    }
-    String donorLastName = csv.getString('Donor Family Name');
-
-    return (''.equals(donorLastName));
+    return false;
   }
  
   public String getDonorId() {
-    return 'ML_C_' + csv.getString('Donor Donor Id');
+    String raw = csv.getString('Donor Donor Id');
+    if ('0'.equals(raw)) {
+      raw = csv.getString('Donor Email');
+    }
+    return 'ML_C_' + raw;
   }
   
   public String getDonorRole() {

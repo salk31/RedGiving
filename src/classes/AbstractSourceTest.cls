@@ -1,6 +1,6 @@
 public abstract class AbstractSourceTest {
 
-  void upload(String content) {
+  protected void upload(String content) {
     AttachmentUploadController controller = new AttachmentUploadController ();
     Blob bodyBlob = Blob.valueOf(content);
     controller.attachment.body = bodyBlob;
