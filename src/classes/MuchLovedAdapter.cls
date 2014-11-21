@@ -36,12 +36,14 @@ public class MuchLovedAdapter implements SourceAdapter {
         contact.MailingState = csv.getString(pfx + 'County');
         contact.MailingCity = csv.getString(pfx + 'Town');
 
-        String address = csv.getString(pfx + 'Address Line 1');
-        String address2 = csv.getString(pfx + 'Address Line 2');
+        String address = csv.getString(pfx + 'Address 1');
+        String address2 = csv.getString(pfx + 'Address 2');
         if (address2.length() > 0)
             address += '\n' + address2;
         contact.MailingStreet = address;
         contact.MailingCountry = csv.getString(pfx + 'Country');
+        
+        contact.HomePhone = csv.getString(pfx + 'Tel');
       }
     }
   }

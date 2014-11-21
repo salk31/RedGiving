@@ -28,6 +28,8 @@ public class MuchLovedTester extends AbstractSourceTest {
     csv.add('Donor Family Name', familyName);
     
     csv.add('Donor Email','fip@fop.com');
+    
+    csv.add('Donor Tel', '123 123 123');
   }
 
   void addDonorEmailOk(CsvBuilder csv) {
@@ -60,6 +62,8 @@ public class MuchLovedTester extends AbstractSourceTest {
     csv.add('Donor Family Name', donorLn);
     
     csv.add('Donor Email','somebodyelse@fop.com');
+    
+    csv.add('Donor Tel', '123 123 123');
     
     addDonation(csv, 'p124');
     csv.eol();
