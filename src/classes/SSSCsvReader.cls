@@ -17,7 +17,7 @@ global class SSSCsvReader implements Iterator<SSSCsvRow>, Iterable<SSSCsvRow> {
     private Map<String, Integer> headingToIndex = new Map<String, Integer>();
 
     public SSSCsvReader(String data){
-        this.buffer = data.split('\n');
+        this.buffer = data.split('\r\n?|\n');
         readHeader(); 
         //now = getRow();
         next = getRow();

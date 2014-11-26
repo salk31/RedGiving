@@ -118,4 +118,14 @@ private class SSSCsvReaderTest {
     System.assertEquals('2', row2.getString('foo bar'));
     System.assertEquals('tree', row2.getString('e'));
   }
+  
+  // https://github.com/salk31/RedGiving/issues/5
+  static testMethod void testMacStyleLineEndings() {
+    SSSCsvReader reader = new SSSCsvReader(
+        'a,b\r' +
+        '1,2\r');
+    SSSCsvRow row1 = reader.next();
+    System.assertEquals('1', row1.getString('a'));
+    System.assertEquals('2', row1.getString('b'));
+  }
 }
