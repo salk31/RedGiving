@@ -31,6 +31,11 @@ public class MuchLovedTester extends AbstractSourceTest {
     
     csv.add('Donor Tel', '123 123 123');
   }
+  
+  void addAnonymousDonor(CsvBuilder csv) {
+    csv.add('Donor ID', '0');
+    csv.add('Donor Email', 'Opt-out');
+  }
 
   void addDonorEmailOk(CsvBuilder csv) {
     csv.add('Donor Contact By Email', 'Yes');

@@ -18,6 +18,8 @@ public abstract class AbstractSourceTest {
   
   abstract void addDonor(CsvBuilder csv, String id, String familyName);
 
+  abstract void addAnonymousDonor(CsvBuilder csv);
+
   abstract void addDonorEmailOk(CsvBuilder csv);
 
   abstract void addDonation(CsvBuilder csv, String id);
@@ -209,6 +211,25 @@ public abstract class AbstractSourceTest {
   
   public void testEmailOkBoth() {
     furtherContact(True, True);
+  }
+  
+  public void testAnonymousDonor() {
+    CsvBuilder csv = new CsvBuilder();
+
+    addPage(csv, '2', 'Test');
+    addFundraiser(csv, '1', 'Smith');
+    addAnonymousDonor(csv);
+    addDonation(csv, '4');
+    csv.eol();
+
+    Test.StartTest();
+    upload(csv.build());
+    Test.StopTest();
+
+    List<Contact> insertedFundraisers = [SELECT LastName
+        FROM Contact];
+    System.assertEquals(1, insertedFundraisers.size());
+    System.assertEquals('Smith', insertedFundraisers[0].LastName);
   }
   
   // TODO __ test correct prefixes XX_D, XX_F, XX_ and XX_P

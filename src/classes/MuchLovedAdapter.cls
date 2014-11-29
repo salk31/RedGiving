@@ -106,14 +106,18 @@ public class MuchLovedAdapter implements SourceAdapter {
     return 'ML_C_' + csv.getString('Fundraiser User Id');
   }
 
+  private String getDonorEmail() {
+    return csv.getString('Donor Email');
+  }
+
   public Boolean isDonorAnonymous() {
-    return false;
+    return 'Opt-out'.equals(getDonorEmail());
   }
  
   public String getDonorId() {
     String raw = csv.getString('Donor Donor Id');
     if ('0'.equals(raw)) {
-      raw = csv.getString('Donor Email');
+      raw = getDonorEmail();
     }
     return 'ML_C_' + raw;
   }

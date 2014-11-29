@@ -25,6 +25,10 @@ public class VirginMoneyGivingTester extends AbstractSourceTest {
     csv.add('donor email address', 'yah@boo.com');
   }
   
+  void addAnonymousDonor(CsvBuilder csv) {
+    csv.add('Donor LastName', 'Anonymous');
+  }
+  
   void addDonorEmailOk(CsvBuilder csv) {
     csv.add('Donor charity marketing allowed', 'Charity Marketing Allowed');
   }

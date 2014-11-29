@@ -26,6 +26,10 @@ public class JustGivingTester extends AbstractSourceTest {
     csv.add('Donor LastName', familyName);
   }
   
+  void addAnonymousDonor(CsvBuilder csv) {
+
+  }
+  
   void addDonorEmailOk(CsvBuilder csv) {
     csv.add('Donor Further Contact', 'Yes');
   }

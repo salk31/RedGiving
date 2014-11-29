@@ -51,4 +51,8 @@ private class MuchLovedTest {
   static testMethod void testEmailOkBoth() {
     create().testEmailOkBoth();
   }
+  
+  static testMethod void testAnonymousDonor() {
+    create().testAnonymousDonor();
+  }
 }
