@@ -38,7 +38,7 @@ public with sharing class AttachmentUploadController {
 
     AttachmentUploadBatchable b =
         new AttachmentUploadBatchable(new SSSCsvReader(raw));   
-    ID myBatchJobID = Database.executeBatch(b, 10);
+    ID myBatchJobID = Database.executeBatch(b, 5);
 
 
     ApexPages.addMessage(new ApexPages.message(ApexPages.severity.INFO, 'Batch upload started ' + myBatchJobID));
