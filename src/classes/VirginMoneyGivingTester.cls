@@ -4,6 +4,10 @@ public class VirginMoneyGivingTester extends AbstractSourceTest {
     return 'VMG';
   }
 
+  Boolean isSingleContactId() {
+    return False;
+  }
+
   void addPage(CsvBuilder csv, String id, String name) {
     csv.add('charity fundraising page id', id);
     csv.add('fundraising page name', name);

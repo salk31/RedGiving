@@ -3,6 +3,10 @@ public class JustGivingTester extends AbstractSourceTest {
   String getPrefix() {
     return 'JG';
   }
+  
+  Boolean isSingleContactId() {
+    return True;
+  }
 
   void addPage(CsvBuilder csv, String id, String name) {
     csv.add('Fundraising Page Id', id);

@@ -4,6 +4,10 @@ public class MuchLovedTester extends AbstractSourceTest {
     return 'ML';
   }
 
+  Boolean isSingleContactId() {
+    return True;
+  }
+
   void addPage(CsvBuilder csv, String id, String name) {
     csv.add('Tribute ID', id);
     csv.add('Tribute', name);

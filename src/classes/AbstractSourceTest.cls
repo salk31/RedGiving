@@ -10,6 +10,8 @@ public abstract class AbstractSourceTest {
   
   abstract String getPrefix();
 
+  abstract Boolean isSingleContactId();
+  
   abstract void addPage(CsvBuilder csv, String id, String name);
   
   abstract void addFundraiser(CsvBuilder csv, String id, String familyName);
@@ -35,6 +37,21 @@ public abstract class AbstractSourceTest {
     Test.StartTest();
     upload(csv.build());
     Test.StopTest();
+    
+    List<Account_Mapping__c> accountMapping = [SELECT Account__c, Name
+        FROM Account_Mapping__c 
+        WHERE Name = :getPageId('123')];
+    System.assertEquals(1, accountMapping.size());
+    
+    List<Contact_Mapping__c> fundraiserMapping = [SELECT Contact__c, Name
+        FROM Contact_Mapping__c 
+        WHERE Name = :getFundraiserId('abc')];
+    System.assertEquals(1, fundraiserMapping.size());
+    
+    List<Contact_Mapping__c> donorMapping = [SELECT Contact__c, Name
+        FROM Contact_Mapping__c 
+        WHERE Name = :getDonorId('xyz')];
+    System.assertEquals(1, donorMapping.size());
   }
   
   public void testReImport() {
@@ -231,7 +248,30 @@ public abstract class AbstractSourceTest {
     System.assertEquals(1, insertedFundraisers.size());
     System.assertEquals('Smith', insertedFundraisers[0].LastName);
   }
+
+
+  private String getDonorId(String id) {
+    return
+        getPrefix() + 
+        '_' +
+        (isSingleContactId() ? 'C' : 'D') +
+        '_' + 
+        id;
+  }
   
-  // TODO __ test correct prefixes XX_D, XX_F, XX_ and XX_P
+  private String getFundraiserId(String id) {
+    return
+        getPrefix() + 
+        '_' +
+        (isSingleContactId() ? 'C' : 'F') +
+        '_' + 
+        id;
+  }
+
+  private String getPageId(String id) {
+    return getPrefix() + '_P_' + id;
+  }
+
+
   // TODO __ explicit expectation of headings for detection and renaming
 }
